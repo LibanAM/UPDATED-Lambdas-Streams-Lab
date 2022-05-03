@@ -1,5 +1,6 @@
 package org.example.streamapi;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MVP {
@@ -10,6 +11,8 @@ public class MVP {
 
     public void printNames(List<String> names) {
         // Implement me :)
+        names.stream()
+                .forEach(System.out::println);
     }
 
     /*
@@ -17,7 +20,8 @@ public class MVP {
      */
     public List<Integer> returnEvenNumbers(List<Integer> numbers) {
         // Implement me :)
-        return null;
+        return numbers.stream().filter(n -> n % 2 == 0).toList();
+
     }
 
     /*
@@ -25,7 +29,7 @@ public class MVP {
     */
     public int[] doubleInts(int[] numbers) {
         // Implement me :)
-        return null;
+        return Arrays.stream(numbers).map(n -> n * 2).toArray();
     }
 
     /*
@@ -33,7 +37,7 @@ public class MVP {
      */
     public List<String> splitToAllCapsList(String input) {
         // Implement me :)
-        return null;
+        return input.toUpperCase().lines().toList();
     }
 
     /*
@@ -43,7 +47,7 @@ public class MVP {
     */
     public List<String> filterByFirstLetterAndOrder(List<String> list, String letter) {
         // Implement me :)
-        return null;
+        return list.stream().filter(l -> l.startsWith(letter)).map(l -> l.toUpperCase()).sorted().toList();
     }
 
     /*

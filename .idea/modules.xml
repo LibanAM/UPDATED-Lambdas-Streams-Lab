@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/lab-streamapi-CORRECT.iml" filepath="$PROJECT_DIR$/.idea/lab-streamapi-CORRECT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/start_code_lab_stream_api/start_code_lab_stream_api.iml" filepath="$PROJECT_DIR$/start_code_lab_stream_api/start_code_lab_stream_api.iml" />
+    </modules>
+  </component>
+</project>
