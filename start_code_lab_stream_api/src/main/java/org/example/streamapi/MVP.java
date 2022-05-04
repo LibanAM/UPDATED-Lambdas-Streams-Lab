@@ -37,7 +37,7 @@ public class MVP {
      */
     public List<String> splitToAllCapsList(String input) {
         // Implement me :)
-        return input.toUpperCase().lines().toList();
+        return Arrays.stream(input.toUpperCase().split("")).toList();
     }
 
     /*
@@ -57,6 +57,6 @@ public class MVP {
     */
     public List<String> filterWords(List<String> words, int maxLength, String firstLetter) {
         // Implement me :)
-        return null;
+        return words.stream().filter(w -> w.startsWith(firstLetter) && w.length() < maxLength).toList();
     }
 }

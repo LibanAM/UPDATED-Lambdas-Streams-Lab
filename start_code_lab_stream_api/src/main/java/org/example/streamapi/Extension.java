@@ -4,7 +4,12 @@ import org.example.streamapi.model.Bodybuilder;
 import org.example.streamapi.model.Friend;
 import org.example.streamapi.model.User;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static org.example.streamapi.model.User.GENDER.UNKNOWN;
 
 public class Extension {
     /*
@@ -12,9 +17,9 @@ public class Extension {
         - use IntStream.range
         - swap the argument's values without introducing a new, local variable.
     */
-    public int [] streamNumbers(int a, int b) {
+    public int[] streamNumbers(int a, int b) {
         // Implement me :)
-        return null;
+        return IntStream.range(Math.min(a, b), Math.max(a, b)).toArray();
     }
 
     /*
@@ -25,7 +30,11 @@ public class Extension {
     */
     public User getUserByIdOrCreateNew(List<User> users, long userId) {
         // Implement me :)
-        return null;
+        return users
+                .stream()
+                .filter(u -> u.getId() == (userId))
+                .findAny()
+                .orElse(new User(userId, "New user", UNKNOWN));
     }
 
     /*
@@ -37,7 +46,10 @@ public class Extension {
 
     public List<String> partyWithFriends(List<Friend> friends) {
         // Implement me :)
-        return null;
+        return friends.stream()
+                .filter(friend -> friend.getActivity() == "Party" && friend.getAvailableDay() == "Saturday")
+                .map(friend -> friend.getName())
+                .toList();
     }
 
     /*
@@ -52,7 +64,15 @@ public class Extension {
      */
     public List<String> sortBodybuilders(List<Bodybuilder> bodybuilders) {
         // Implement me :)
-        return null;
-    }
+        return bodybuilders.stream()
+                .sorted(Comparator.comparingInt(Bodybuilder::getLift).reversed()
+                .thenComparing((Bodybuilder::getAge))
+                .thenComparing((Bodybuilder::getName)))
+//                .sorted(Comparator.comparingInt(Bodybuilder::getAge))
+//                .sorted(Comparator.comparing(Bodybuilder::getName))
+                .map(Bodybuilder::getName)
+                .toList();
 
+    }
 }
+
